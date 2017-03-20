@@ -14,8 +14,14 @@ var Module = function (bot) {
     };
   };
   this.commands = {};
-  var board = ":white_circle: :white_circle: :white_circle: :white_circle: :white_circle: :white_circle: :white_circle: \n:white_circle: :white_circle: :white_circle: :white_circle: :white_circle: :white_circle: :white_circle: \n:white_circle: :white_circle: :white_circle: :white_circle: :white_circle: :white_circle: :white_circle: \n:white_circle: :white_circle: :white_circle: :white_circle: :white_circle: :white_circle: :white_circle: \n:white_circle: :white_circle: :white_circle: :white_circle: :white_circle: :white_circle: :white_circle: \n:white_circle: :white_circle: :white_circle: :white_circle: :white_circle: :white_circle: :white_circle:"
+
   this.commands.connectfour = function(channel, args, user) {
+    var board= [[]];
+    for (i=0; i<6;i++){
+      for(j=0; j<7;i++){
+        board [i,j] = ":white_circle:";
+      }
+    }
     bot.postMessage(channel, board);
 
   };
