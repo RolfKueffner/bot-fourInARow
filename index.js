@@ -17,10 +17,25 @@ var Module = function (bot) {
 
   var gametester;
   var opponent;
-  var board = [[]];
   var bottomRow = [":one:", ":two:", ":three:", ":four:", ":five:", ":six:", ":seven:"];
   var userTurn;
   var player;
+  var boardTemp = [[":white_circle:",":white_circle:",":white_circle:",":white_circle:",":white_circle:",":white_circle:",":white_circle:"],
+    [":white_circle:",":white_circle:",":white_circle:",":white_circle:",":white_circle:",":white_circle:",":white_circle:"],
+    [":white_circle:",":white_circle:",":white_circle:",":white_circle:",":white_circle:",":white_circle:",":white_circle:"],
+    [":white_circle:",":white_circle:",":white_circle:",":white_circle:",":white_circle:",":white_circle:",":white_circle:"],
+    [":white_circle:",":white_circle:",":white_circle:",":white_circle:",":white_circle:",":white_circle:",":white_circle:"],
+    [":white_circle:",":white_circle:",":white_circle:",":white_circle:",":white_circle:",":white_circle:",":white_circle:"]];
+  var board;
+  var boardLogic;
+
+  function clearBoard(){
+
+    board = boardTemp.slice(0);
+    for(i=0;i<board.length;i++){
+      board[i] = board[i].join("");
+    }
+  }
 
   this.commands.connectfourvs = function(channel, args, user) {
     if (gametester === 1){
@@ -28,22 +43,29 @@ var Module = function (bot) {
     }
     else {
       gametester = 1;
-      opponent = args.substring(1, args.length);
-      // todo if(opponent != _.find), timeout
+      opponent = _.find(bot.allUsers, {id: args.substring(2, args.length-1)}).name;
       userTurn = opponent;
       player = user.name;
-      for (i = 0; i < 6; i++) {
-        for (j = 0; j < 7; i++) {
-          board [i, j] = ":white_circle:";
-        }
-      }
-      bot.postMessage(channel, board +"\n"+ bottomRow + "\n " + userTurn + ", your turn. Choose with !column number.");
+      clearBoard();
+      bot.postMessage(channel, board.join("\n") +"\n"+ bottomRow.join("") + "\n " + userTurn + ", your turn. Choose with !column number.");
+      setTimeout(function() {
+        bot.postMessage(channel, "Times up for " + opponent + " and " + player + ".");
+        board = boardTemp.slice(0);
+        boardLogic = boardTemp.slice(0);
+        gametester = 0;}, 3600000);
     }
   };
 
   this.commands.column = function(channel, args, user) {
+    var ballSet = false;
+    var x;
+    var y;
+    var ballColor;
     if(gametester != 1){
       bot.postMessage(channel, "No game running!");
+    }
+    else if(user.name != userTurn){
+      bot.postMessage(channel, "its not your turn");
     }
     else{
       var column = args;
@@ -52,42 +74,156 @@ var Module = function (bot) {
       }
       else{
         switch(column) {
-          case 1:
+          case "1":
+            column = 1;
             break;
-          case 2:
+          case "2":
+            column = 2;
             break;
-          case 3:
+          case "3":
+            column = 3;
             break;
-          case 4:
+          case "4":
+            column = 4;
             break;
-          case 5:
+          case "5":
+            column = 5;
             break;
-          case 6:
+          case "6":
+            column = 6;
             break;
-          case 7:
+          case "7":
+            column = 7;
             break;
           default:
             column = -1;
         }
-      }
-      if (column === -1){
-        bot.postMessage(channel, "no valid column");
-      }
-      else{
-        for (i = 5; i >= 0; i--){
-          if(board[i,column] === ":white_circle:"){
-            if(userTurn === opponent){
-              board[i,column] = ":red_circle:";
-              userTurn = player;
+
+        if (column === -1){
+          bot.postMessage(channel, "no valid column");
+        }
+        else{
+          boardLogic = boardTemp.slice(0);
+          for (i = 5; i >= 0; i--) {
+            if (boardLogic[i][column - 1] === ":white_circle:") {
+              if (userTurn === opponent) {
+                boardLogic[i][column - 1] = ":red_circle:";
+                userTurn = player;
+                ballColor = ":red_circle:";
+              }
+              else {
+                boardLogic[i][column - 1] = ":large_blue_circle:";
+                userTurn = opponent;
+                ballColor = ":large_blue_circle:";
+              }
+              ballSet = true;
+              x = i;
+              y = column -1;
+              break;
+            }
+          }
+          if(!ballSet){
+            bot.postMessage(channel, "no valid column");
+          }
+          else {
+            board = boardLogic.slice(0);
+            for (i = 0; i < board.length; i++) {
+              board[i] = board[i].join("");
+            }
+            //checking winner vertical
+            var winCounter = 0;
+            var xTemp = x;
+            var yTemp = y;
+            var won = false;
+            while (xTemp <= 5 && boardLogic[xTemp][yTemp] === ballColor){
+              winCounter++;
+              xTemp++;
+            }
+            xTemp = x;
+            while (xTemp >= 0  && boardLogic[xTemp][yTemp] === ballColor){
+              winCounter++;
+              xTemp--;
+            }
+            //console.log("Vertikal ", xTemp, yTemp, winCounter);
+
+            if(winCounter >= 5){
+              bot.postMessage(channel, userTurn + " lost!");
+              won = true;
             }
             else{
-              board[i,column] = ":large_blue_circle:";
-              userTurn = opponent;
+              //check winner horizontal
+              winCounter = 0;
+              xTemp = x;
+              yTemp = y;
+              while (yTemp <= 6 && boardLogic[xTemp][yTemp] === ballColor){
+                winCounter++;
+                yTemp++;
+              }
+              yTemp = y;
+              while (yTemp >= 0 && boardLogic[xTemp][yTemp] === ballColor){
+                winCounter++;
+                yTemp--;
+              }
+              //console.log("Horizontal ", xTemp, yTemp, winCounter);
             }
-            break;
-          }
-          else{
-            bot.postMessage(channel, "no valid column");
+            if(winCounter >= 5 && !won){
+              bot.postMessage(channel, userTurn + " lost!");
+              won = true;
+            }
+            else{
+              //check winner diagonal left
+              winCounter = 0;
+              xTemp = x;
+              yTemp = y;
+              while (xTemp <= 5 && yTemp <= 6 && boardLogic[xTemp][yTemp] === ballColor){
+                winCounter++;
+                yTemp++;
+                xTemp++
+              }
+              xTemp = x;
+              yTemp = y;
+              while (xTemp >= 0 && yTemp >= 0 && boardLogic[xTemp][yTemp] === ballColor){
+                winCounter++;
+                yTemp--;
+                xTemp--
+              }
+            }
+            if(winCounter >= 5 && !won ){
+              bot.postMessage(channel, userTurn + " lost!");
+              won = true;
+            }
+            else{
+              //check winner diagonal right
+              winCounter = 0;
+              xTemp = x;
+              yTemp = y;
+              while (xTemp <= 5 && yTemp >= 0 && boardLogic[xTemp][yTemp] === ballColor){
+                winCounter++;
+                yTemp--;
+                xTemp++
+              }
+              xTemp = x;
+              yTemp = y;
+              while (xTemp >= 0 && yTemp <= 6 && boardLogic[xTemp][yTemp] === ballColor){
+                winCounter++;
+                yTemp++;
+                xTemp--
+              }
+            }
+            if(winCounter >= 5 && !won ){
+              bot.postMessage(channel, userTurn + " lost!");
+              won = true;
+            }
+
+            if(won){
+              bot.postMessage(channel, board.join("\n") + "\n" + bottomRow.join(""));
+              board = boardTemp.slice(0);
+              boardLogic = boardTemp.slice(0);
+              gametester = 0;
+            }
+            else {
+              bot.postMessage(channel, board.join("\n") + "\n" + bottomRow.join("") + "\n " + userTurn + ", your turn. Choose with !column number.");
+            }
           }
         }
       }
