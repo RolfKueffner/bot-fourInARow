@@ -9,7 +9,7 @@ var Module = function (bot) {
   this.allowedChannels = [];
   this.help = function () {
     return {
-      "connectfour": "Play connect four vs someone"
+      "connectfourvs": "Play connect four vs someone"
 
     };
   };
@@ -22,7 +22,7 @@ var Module = function (bot) {
   var userTurn;
   var player;
 
-  this.commands.connectfour = function(channel, args, user) {
+  this.commands.connectfourvs = function(channel, args, user) {
     if (gametester === 1){
       bot.postMessage(channel, "Wait for the other game to end "+user.name);
     }
