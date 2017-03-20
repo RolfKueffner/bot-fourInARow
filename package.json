@@ -2,84 +2,81 @@
   "_args": [
     [
       {
-        "raw": "RolfKueffner/bot-passwordgenerator",
+        "raw": "RolfKueffner/bot-fourInARow",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "RolfKueffner/bot-passwordgenerator",
-        "spec": "github:RolfKueffner/bot-passwordgenerator",
+        "rawSpec": "RolfKueffner/bot-fourInARow",
+        "spec": "github:RolfKueffner/bot-fourInARow",
         "type": "hosted",
         "hosted": {
           "type": "github",
-          "ssh": "git@github.com:RolfKueffner/bot-passwordgenerator.git",
-          "sshUrl": "git+ssh://git@github.com/RolfKueffner/bot-passwordgenerator.git",
-          "httpsUrl": "git+https://github.com/RolfKueffner/bot-passwordgenerator.git",
-          "gitUrl": "git://github.com/RolfKueffner/bot-passwordgenerator.git",
-          "shortcut": "github:RolfKueffner/bot-passwordgenerator",
-          "directUrl": "https://raw.githubusercontent.com/RolfKueffner/bot-passwordgenerator/master/package.json"
+          "ssh": "git@github.com:RolfKueffner/bot-fourInARow.git",
+          "sshUrl": "git+ssh://git@github.com/RolfKueffner/bot-fourInARow.git",
+          "httpsUrl": "git+https://github.com/RolfKueffner/bot-fourInARow.git",
+          "gitUrl": "git://github.com/RolfKueffner/bot-fourInARow.git",
+          "shortcut": "github:RolfKueffner/bot-fourInARow",
+          "directUrl": "https://raw.githubusercontent.com/RolfKueffner/bot-fourInARow/master/package.json"
         }
       },
       "C:\\Users\\guestabilita\\WebstormProjects\\SlackBot"
     ],
     [
       {
-        "raw": "RolfKueffner/bot-passwordgenerator",
+        "raw": "RolfKueffner/bot-fourInARow",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "RolfKueffner/bot-passwordgenerator",
-        "spec": "github:rolfkueffner/bot-passwordgenerator",
+        "rawSpec": "RolfKueffner/bot-fourInARow",
+        "spec": "github:rolfkueffner/bot-fourInARow",
         "type": "hosted",
         "hosted": {
           "type": "github",
-          "ssh": "git@github.com:rolfkueffner/bot-passwordgenerator.git",
-          "sshUrl": "git+ssh://git@github.com/rolfkueffner/bot-passwordgenerator.git",
-          "httpsUrl": "git+https://github.com/rolfkueffner/bot-passwordgenerator.git",
-          "gitUrl": "git://github.com/rolfkueffner/bot-passwordgenerator.git",
-          "shortcut": "github:rolfkueffner/bot-passwordgenerator",
-          "directUrl": "https://raw.githubusercontent.com/rolfkueffner/bot-passwordgenerator/master/package.json"
+          "ssh": "git@github.com:rolfkueffner/bot-fourInARow.git",
+          "sshUrl": "git+ssh://git@github.com/rolfkueffner/bot-fourInARow.git",
+          "httpsUrl": "git+https://github.com/rolfkueffner/bot-fourInARow.git",
+          "gitUrl": "git://github.com/rolfkueffner/bot-fourInARow.git",
+          "shortcut": "github:rolfkueffner/bot-fourInARow",
+          "directUrl": "https://raw.githubusercontent.com/rolfkueffner/bot-fourInARow/master/package.json"
         }
       },
       "C:\\Users\\guestabilita\\WebstormProjects\\SlackBot"
     ]
   ],
-  "_from": "rolfkueffner/bot-passwordgenerator",
-  "_id": "bot-passwordgenerator@1.0.0",
+  "_from": "rolfkueffner/bot-fourInARow",
+  "_id": "bot-fourInARow@1.0.0",
   "_inCache": true,
-  "_location": "/bot-passwordgenerator",
+  "_location": "/bot-fourInARow",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "RolfKueffner/bot-passwordgenerator",
+    "raw": "RolfKueffner/bot-fourInARow",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "RolfKueffner/bot-passwordgenerator",
-    "spec": "github:rolfkueffner/bot-passwordgenerator",
+    "rawSpec": "RolfKueffner/bot-fourInARow",
+    "spec": "github:rolfkueffner/bot-fourInARow",
     "type": "hosted",
     "hosted": {
       "type": "github",
-      "ssh": "git@github.com:rolfkueffner/bot-passwordgenerator.git",
-      "sshUrl": "git+ssh://git@github.com/rolfkueffner/bot-passwordgenerator.git",
-      "httpsUrl": "git+https://github.com/rolfkueffner/bot-passwordgenerator.git",
-      "gitUrl": "git://github.com/rolfkueffner/bot-passwordgenerator.git",
-      "shortcut": "github:rolfkueffner/bot-passwordgenerator",
-      "directUrl": "https://raw.githubusercontent.com/rolfkueffner/bot-passwordgenerator/master/package.json"
+      "ssh": "git@github.com:rolfkueffner/bot-fourInARow.git",
+      "sshUrl": "git+ssh://git@github.com/rolfkueffner/bot-fourInARow.git",
+      "httpsUrl": "git+https://github.com/rolfkueffner/bot-fourInARow.git",
+      "gitUrl": "git://github.com/rolfkueffner/bot-fourInARow.git",
+      "shortcut": "github:rolfkueffner/bot-fourInARow",
+      "directUrl": "https://raw.githubusercontent.com/rolfkueffner/bot-fourInARow/master/package.json"
     }
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "git://github.com/rolfkueffner/bot-passwordgenerator.git#a759db44ad9bbefb7adc987fcc8007ad22609ac6",
+  "_resolved": "git://github.com/rolfkueffner/bot-fourInARow.git#a759db44ad9bbefb7adc987fcc8007ad22609ac6",
   "_shasum": "37bb1b76c274e6749c4cdba870a7b441b9a809f9",
   "_shrinkwrap": null,
-  "_spec": "RolfKueffner/bot-passwordgenerator",
+  "_spec": "RolfKueffner/bot-fourInARow",
   "_where": "C:\\Users\\guestabilita\\WebstormProjects\\SlackBot",
   "author": "",
   "bugs": {
-    "url": "https://github.com/RolfKueffner/bot-passwordgenerator/issues"
-  },
-  "commands": {
-    "generatepassword": "generates passwords"
+    "url": "https://github.com/RolfKueffner/bot-fourInARow/issues"
   },
   "dependencies": {
     "lodash": "^4.17.4"
@@ -87,16 +84,16 @@
   "description": "See code, its izi.",
   "devDependencies": {},
   "gitHead": "0a8b2a1378f5e6e9dba27566d5109cda46521b9c",
-  "homepage": "https://github.com/RolfKueffner/bot-passwordgenerator#readme",
+  "homepage": "https://github.com/RolfKueffner/bot-fourInARow#readme",
   "license": "ISC",
   "main": "index.js",
-  "name": "bot-passwordgenerator",
+  "name": "bot-fourInARow",
   "optionalDependencies": {},
   "readme": "# Bot Example Plugin\r\n\r\nSee code, its izi.",
   "readmeFilename": "README.md",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RolfKueffner/bot-passwordgenerator.git"
+    "url": "git+https://github.com/RolfKueffner/bot-fourInARow.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
