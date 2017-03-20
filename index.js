@@ -9,7 +9,7 @@ var Module = function (bot) {
   this.allowedChannels = [];
   this.help = function () {
     return {
-      "connectfourvs": "Play connect four vs someone"
+      "connectfourvs": "Play connect four vs someone; Usage !connectfour @user"
 
     };
   };
